@@ -1,0 +1,23 @@
+{
+    "name": "PspMediaVolume",
+    "version": "0.0.1",
+    "icon": "fab fa-battle-net",
+    "category": "undefined",
+    "author": "poulsp",
+    "maintainers": [],
+    "desc": "Manage volume in the synchronous multiroom audio. this is the ground/base skill for the synchronous multiroom audio system.  uses the excelent 'snapcast system' from \"https://github.com/badaix/snapcast\" by badaix.",
+    "aliceMinVersion": "1.0.0-b3",
+    "systemRequirements": [
+        ""
+    ],
+    "pipRequirements": [
+        ""
+    ],
+    "conditions": {
+        "lang": [
+            "en"
+        ],
+        "online": true,
+        "asrArbitraryCapture": true
+    }
+}
