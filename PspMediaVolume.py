@@ -6,7 +6,7 @@ from core.util.Decorators import IntentHandler
 class PspMediaVolume(AliceSkill):
 	"""
 	Author: poulsp
-	Description: Manage volume in the synchronous multiroom audio. this is the ground/base skill for the synchronous multiroom audio system.  uses the excelent 'snapcast system' from "https://github.com/badaix/snapcast" by badaix.
+	Description: Manage volume in the synchronous multiroom audio.
 	"""
 
 	@IntentHandler('MyIntentName')

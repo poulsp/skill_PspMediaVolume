@@ -5,7 +5,7 @@
     "category": "undefined",
     "author": "poulsp",
     "maintainers": [],
-    "desc": "Manage volume in the synchronous multiroom audio. this is the ground/base skill for the synchronous multiroom audio system.  uses the excelent 'snapcast system' from \"https://github.com/badaix/snapcast\" by badaix.",
+    "desc": "Manage volume in the synchronous multiroom audio.",
     "aliceMinVersion": "1.0.0-b3",
     "systemRequirements": [
         ""
