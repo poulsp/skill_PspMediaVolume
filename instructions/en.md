@@ -14,6 +14,8 @@ git clone https://github.com/poulsp/skill_PspMediaVolume PspMediaVolume
 ### Test it out with the Alice docker image.
 Alice docker image [docker-Alice-Linux-x86](https://github.com/poulsp/docker-Alice-Linux-x86.git)
 You should remember to uncomment
+```
 ports:
 #- "1704:1704"
+```
 in docker-compose.yml.

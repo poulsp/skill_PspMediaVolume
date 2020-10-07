@@ -8,6 +8,8 @@ This is the ground/base skill for the synchronous multiroom audio system.
 
 Uses the excelent 'snapcast system' from "https://github.com/badaix/snapcast" by badaix.
 
+#### Please read the [instructions](https://github.com/poulsp/skill_PspMediaVolume/blob/master/instructions/en.md) before use.
+
 
 - Author: poulsp
 - Maintainers:
@@ -15,4 +17,3 @@ Uses the excelent 'snapcast system' from "https://github.com/badaix/snapcast" by
 - Languages:
     en
 
-#### Please read the [instructions](https://github.com/poulsp/skill_PspMediaVolume/blob/master/instructions/en.md) before use.
