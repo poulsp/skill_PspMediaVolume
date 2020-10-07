@@ -1,3 +1,6 @@
+# Get rid of joe's bak files
+*~
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
