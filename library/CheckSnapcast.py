@@ -32,41 +32,20 @@ class CheckSnapcast():
 				shell=True
 			).decode('utf-8').replace('\n','')
 
+			subprocess.run(['sudo', 'rm', '/dev/shm/snapfifo'])
+			subprocess.run(['sudo', 'systemctl', 'restart', 'snapserver'])
+
 		except subprocess.CalledProcessError as e:
 			# Install snapserver
 			sedCmd 	= shlex.split('sudo sed -i "s/\.*source = pipe:\/\/\/tmp\/snapfifo?name=default/source = pipe:\/\/\/dev\/shm\/snapfifo?name=default/" /etc/snapserver.conf')
 			sedCmd2 = shlex.split('sudo sed -i "s/\.*stream = pipe:\/\/\/tmp\/snapfifo?name=default/stream = pipe:\/\/\/dev\/shm\/snapfifo?name=default/" /etc/snapserver.conf')
+			sedCmd3 = shlex.split('sudo sed -i "s/\.*User=snapserver/User=pi/" /lib/systemd/system/snapserver.service')
+			sedCmd4 = shlex.split('sudo sed -i "s/\.*Group=snapserver/Group=pi/" /lib/systemd/system/snapserver.service')
 
 			if _PLATFORM_MACHINE == "x86_64":
-				# print(f"####################################### _PLATFORM_MACHINE: {_PLATFORM_MACHINE } ")
-				# Installed in the Docker image.
-				pass
-				# downloadUrl = f"{_WGET_URL}-1_amd64.deb"
-				# snapServerDeb = f"snapserver_{_RELEASE}-1_amd64.deb"
-
-				# print(f"####################################### downloadUrl {downloadUrl } ")
-				# print(f"####################################### snapServerDeb {snapServerDeb} ")
-
-
-				# subprocess.run(['wget', downloadUrl])
-				# subprocess.run(['sudo', 'dpkg', '-i', snapServerDeb])
-				# subprocess.run(['sudo', 'apt-get', '-f', 'install', '-y'])
-				# subprocess.run(['rm', snapServerDeb])
-				# subprocess.run(['sudo', 'systemctl', 'stop', 'snapserver'])
-				# subprocess.run(sedCmd)
-				# subprocess.run(sedCmd2)
-				# subprocess.run(['sudo', 'rm', '/tmp/snapfifo'])
-				# subprocess.run(['sudo', 'systemctl', 'restart', 'snapserver'])
-
-
-			elif _PLATFORM_MACHINE == "armv7l" or _PLATFORM_MACHINE == "armv6l":
-				# print(f"####################################### _PLATFORM_MACHINE: {_PLATFORM_MACHINE } ")
-				downloadUrl = f"{_WGET_URL}-1_armhf.deb"
-				snapServerDeb = f"snapserver_{_RELEASE}-1_armhf.deb"
-
-				# print(f"####################################### downloadUrl {downloadUrl } ")
-				# print(f"####################################### snapServerDeb {snapServerDeb} ")
-
+				#Is installed in the Docker image.
+				downloadUrl = f"{_WGET_URL}-1_amd64.deb"
+				snapServerDeb = f"snapserver_{_RELEASE}-1_amd64.deb"
 				subprocess.run(['wget', downloadUrl])
 				subprocess.run(['sudo', 'dpkg', '-i', snapServerDeb])
 				subprocess.run(['sudo', 'apt-get', '-f', 'install', '-y'])
@@ -74,6 +53,24 @@ class CheckSnapcast():
 				subprocess.run(['sudo', 'systemctl', 'stop', 'snapserver'])
 				subprocess.run(sedCmd)
 				subprocess.run(sedCmd2)
+				subprocess.run(sedCmd3)
+				subprocess.run(sedCmd4)
+				subprocess.run(['sudo', 'rm', '/tmp/snapfifo'])
+				subprocess.run(['sudo', 'systemctl', 'restart', 'snapserver'])
+
+
+			elif _PLATFORM_MACHINE == "armv7l" or _PLATFORM_MACHINE == "armv6l":
+				downloadUrl = f"{_WGET_URL}-1_armhf.deb"
+				snapServerDeb = f"snapserver_{_RELEASE}-1_armhf.deb"
+				subprocess.run(['wget', downloadUrl])
+				subprocess.run(['sudo', 'dpkg', '-i', snapServerDeb])
+				subprocess.run(['sudo', 'apt-get', '-f', 'install', '-y'])
+				subprocess.run(['rm', snapServerDeb])
+				subprocess.run(['sudo', 'systemctl', 'stop', 'snapserver'])
+				subprocess.run(sedCmd)
+				subprocess.run(sedCmd2)
+				subprocess.run(sedCmd3)
+				subprocess.run(sedCmd4)
 				subprocess.run(['sudo', 'rm', '/tmp/snapfifo'])
 				subprocess.run(['sudo', 'systemctl', 'restart', 'snapserver'])
 
@@ -82,7 +79,6 @@ class CheckSnapcast():
 	@staticmethod
 	def removeSnapserver():
 		if _PLATFORM_MACHINE == "x86_64":
-			print(f"####################################### _PLATFORM_MACHINE: {_PLATFORM_MACHINE } ")
 			# Installed in the Docker image.
 			pass
 
