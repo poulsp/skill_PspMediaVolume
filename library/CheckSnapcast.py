@@ -74,7 +74,6 @@ class CheckSnapcast():
 				subprocess.run(sedCmd3)
 				subprocess.run(sedCmd4)
 				subprocess.run(['sudo', 'rm', '/tmp/snapfifo'])
-				systemctl daemon-reload
 				subprocess.run(['sudo', 'systemctl', 'daemon-reload'])
 				subprocess.run(['sudo', 'systemctl', 'restart', 'snapserver'])
 
