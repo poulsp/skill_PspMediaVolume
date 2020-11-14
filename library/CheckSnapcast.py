@@ -56,6 +56,8 @@ class CheckSnapcast():
 				subprocess.run(sedCmd3)
 				subprocess.run(sedCmd4)
 				subprocess.run(['sudo', 'rm', '/tmp/snapfifo'])
+				# if not a Docker container
+				#subprocess.run(['sudo', 'systemctl', 'daemon-reload'])
 				subprocess.run(['sudo', 'systemctl', 'restart', 'snapserver'])
 
 
@@ -72,6 +74,8 @@ class CheckSnapcast():
 				subprocess.run(sedCmd3)
 				subprocess.run(sedCmd4)
 				subprocess.run(['sudo', 'rm', '/tmp/snapfifo'])
+				systemctl daemon-reload
+				subprocess.run(['sudo', 'systemctl', 'daemon-reload'])
 				subprocess.run(['sudo', 'systemctl', 'restart', 'snapserver'])
 
 
